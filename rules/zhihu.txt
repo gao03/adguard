@@ -1,6 +1,15 @@
+! Title: Zhihu App 广告屏蔽
+! Description: 移除知乎部分广告
+! Version: 1.0.1
+! Expires: 7 days
+
+! ----------------------- New API Domain --------------------------
 
 ! 回答下面的广告
 ||api.zhihu.com/appview/api/v4/answers/*/recommendations
+
+! 回答下面的赞赏, 没法全部屏蔽
+||www.zhihu.com/api/v4/answers/*/rewarders
 
 ! 回答下面的“作者推荐”
 ||www.zhihu.com/api/v4/clubs/answers/*/bind_club
