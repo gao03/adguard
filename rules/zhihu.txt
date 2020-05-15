@@ -19,10 +19,13 @@
 ! 问题页面的“圈子”
 www.zhihu.com##.QuestionClubEntry
 
+# 开屏广告
+||api.zhihu.com/commercial_api
+||api.zhihu.com/commercial_api
+||api.zhihu.com/drama/living-info
+
+
 ! 下面这些是复制来的：https://github.com/zsakvo/AdGuard-Custom-Rule
-! Block splash
-||api.zhihu.com/commercial_api/launch_v2^
-||api.zhihu.com/commercial_api/real_time_launch_v2^
 
 ! Block xj8 request
 |api.zhihu.com/ad-style-service/request
