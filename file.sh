@@ -2,14 +2,19 @@
 
 # 要创建空文件
 empty_file_list=(
-    /storage/emulated/0/Android/data/com.sankuai.meituan/cache/startup
-    /storage/emulated/0/Android/data/com.ss.android.ugc.aweme/awemeSplashCache
-    /storage/emulated/0/Android/data/tv.danmaku.bili/cache
-    /storage/emulated/0/Android/data/com.sankuai.meituan.takeoutnew/cache)
+    /storage/emulated/0/Android/data/com.sankuai.meituan/cache/startup         # 美团
+    /storage/emulated/0/Android/data/com.ss.android.ugc.aweme/awemeSplashCache # 抖音
+    /storage/emulated/0/Android/data/tv.danmaku.bili/cache                     # 哔哩哔哩
+    /storage/emulated/0/Android/data/com.sankuai.meituan.takeoutnew/cache      # 美团外卖
+    /storage/emulated/0/Android/data/com.qidian.QDReader/files/QDReader/image  # 起点
+    /storage/emulated/0/Android/data/com.netease.cloudmusic/cache/Ad/          # 网易云音乐
+)
 
 # 要修改文件权限
 change_attr_list=(
-    /storage/emulated/0/Android/data/tv.danmaku.bili/cache)
+    /storage/emulated/0/Android/data/tv.danmaku.bili/cache
+    /storage/emulated/0/Android/data/com.netease.cloudmusic/cache/Ad/
+)
 
 for dir_name in ${empty_file_list[@]}; do
     # 对应文件夹不存在则跳过
