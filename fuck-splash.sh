@@ -8,6 +8,9 @@ empty_file_list=(
     /storage/emulated/0/Android/data/com.sankuai.meituan.takeoutnew/cache      # 美团外卖
     /storage/emulated/0/Android/data/com.qidian.QDReader/files/QDReader/image  # 起点
     /storage/emulated/0/Android/data/com.netease.cloudmusic/cache/Ad/          # 网易云音乐
+    /storage/emulated/0/Android/data/com.jingdong.app.mall/files/image         # 京东，只能屏蔽一部分
+    /storage/emulated/0/Android/data/com.qidian.QDReader/files/QDReader/image  # 起点
+    /storage/emulated/0/Android/data/com.sankuai.meituan.takeoutnew/files/cips/common/waimai/assets/promotion  # 美团外卖2
 )
 
 # 要修改文件权限
@@ -20,6 +23,10 @@ for dir_name in ${empty_file_list[@]}; do
     # 对应文件夹不存在则跳过
     echo "==开始处理=="
     echo $dir_name
+    if [ -a $dir_name ]; then
+        echo "--已存在同名文件--"
+        continue
+    fi
     if [ ! -d $dir_name ]; then
         echo "--文件夹不存在--"
         continue
@@ -31,7 +38,7 @@ done
 
 # 需要root权限
 su
-for dir_name in ${empty_file_list[@]}; do
+for dir_name in ${change_attr_list[@]}; do
     # 对应文件夹不存在则跳过
     echo "==开始处理2=="
     echo $dir_name
