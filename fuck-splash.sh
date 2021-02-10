@@ -47,15 +47,15 @@ empty_file_list=(
 # 要修改文件权限
 change_attr_list=(
     /storage/emulated/0/Android/data/tv.danmaku.bili/cache
-    /storage/emulated/0/Android/data/com.netease.cloudmusic/cache/Ad/
+    /storage/emulated/0/Android/data/com.netease.cloudmusic/cache/Ad
     /storage/emulated/0/Android/data/com.qidian.QDReader/files/QDReader/image
     /storage/emulated/0/Android/data/com.taobao.taobao/files/AVFSCache/bootimage
 )
 
+cnt=0
 for dir_name in ${empty_file_list[@]}; do
     # 对应文件夹不存在则跳过
-    echo "==开始处理=="
-    echo $dir_name
+    echo "\n==开始处理==" $dir_name
     if [ -a $dir_name ]; then
         echo "--已存在同名文件--"
         continue
@@ -66,19 +66,27 @@ for dir_name in ${empty_file_list[@]}; do
     fi
     rm -r $dir_name
     touch $dir_name
+    ((cnt++));
     echo "==处理完成=="
 done
+echo '删除文件夹个数：' $cnt
 
+cnt=0
 # 需要root权限
-echo "修改文件权限"
+echo "\n修改文件权限"
 for dir_name in ${change_attr_list[@]}; do
     # 对应文件夹不存在则跳过
-    echo "==开始处理2=="
-    echo $dir_name
+    echo "==开始处理文件权限==" $dir_name "\n"
     if [ ! -a $dir_name ]; then
+        file_attr=`lsattr -l $dir_name | grep " Immutable"`
+        if [[ $file_attr != "" ]] then
+            echo '--该文件权限已处理--'
+            continue
+        fi
         chattr +i $dir_name
-        echo "--文件夹权限修改--"
-        continue
+        echo "--文件夹权限修改成功--"
+        ((cnt++));
     fi
-    echo "==处理完成2=="
+    echo "==文件权限处理完成=="
 done
+echo '处理文件权限个数：' $cnt
