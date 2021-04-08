@@ -66,7 +66,7 @@ for dir_name in ${empty_file_list[@]}; do
     fi
     rm -r $dir_name
     touch $dir_name
-    ((cnt++));
+    ((cnt++))
     echo "==处理完成=="
 done
 echo '删除文件夹个数：' $cnt
@@ -78,14 +78,14 @@ for dir_name in ${change_attr_list[@]}; do
     # 对应文件夹不存在则跳过
     echo "==开始处理文件权限==" $dir_name "\n"
     if [ ! -a $dir_name ]; then
-        file_attr=`lsattr -l $dir_name | grep " Immutable"`
-        if [[ $file_attr != "" ]] then
+        file_attr=$(lsattr -l $dir_name | grep " Immutable")
+        if [[ $file_attr != "" ]]; then
             echo '--该文件权限已处理--'
             continue
         fi
         chattr +i $dir_name
         echo "--文件夹权限修改成功--"
-        ((cnt++));
+        ((cnt++))
     fi
     echo "==文件权限处理完成=="
 done
